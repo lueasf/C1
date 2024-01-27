@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Les bases en C
+// Les bases en Czzz
 
 void tp1(){int age = 19;
     float taille = 1.68;

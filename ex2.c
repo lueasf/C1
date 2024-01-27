@@ -40,6 +40,7 @@ void tp3(){
     printf("la moyenne de ces 3 entiers est %f\n", (float)(entier1 + entier2 + entier3)/3);
 }
 
+// calcul de cercle
 void tp4(){
     float rayon;
     float pi = 3.141562;
@@ -50,10 +51,22 @@ void tp4(){
     printf("l'aire du cercle est de %.3f\n", pi* pow(rayon, 2)); // pow pour puissance
 }
 
+// conversion majuscule
+
+void tp5(){
+    char lettre;
+    const int DEC = 'A'-'a'; //-32
+    printf("%d\n", DEC);
+    printf("donnez une lettre minuscule:");
+    scanf("%c", &lettre);
+    printf("%c\n", (lettre + DEC) );
+}
+
 int main() {
-    // tp1();
-    // tp2();
-    // tp3();
+    tp1();
+    tp2();
+    tp3();
     tp4();
+    tp5();
     return 0;
 }
