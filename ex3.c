@@ -108,6 +108,56 @@ void tp6(){
         printf("flottant\n");
 }
 
+void tp7(){
+    int nb;
+    float racine;
+    printf("donnez un nombre pour savoir si c'est un carré parfait:");
+    scanf("%d", &nb);
+
+    if (sqrt(nb) == round(sqrt(nb)))
+        printf("c'est un carré parfait\n");
+    else
+        printf("ce n'est pas un carré parfait\n");
+}
+
+// conversion de date
+void tp8(){
+    int jour, mois, année;
+    printf("donnez une date au format jj/mm/aaaa:");
+    scanf("%d/%d/%d", &jour, &mois, &année);
+    printf("\t%d ", jour);
+    switch(mois){
+    case 1:
+        printf("janvier");
+    break;
+    case 2:
+        printf("février");
+    break;
+    case 3:
+        printf("mars"); 
+    break;
+    case 4:
+        printf("avril");    
+    break;
+    default:
+        printf("autre mois");
+    break;}
+}
+
+void tp9(){
+    char asciii;
+    printf("donnez un caractère:");
+    scanf("%c", &asciii);
+    if (asciii >= 65 && asciii <= 90)
+        printf("c'est une majuscule\n");
+    else if (asciii >= 97 && asciii <= 122)
+        printf("c'est une minuscule\n");
+    else if (asciii >= 48 && asciii <= 57)
+        printf("c'est un chiffre\n");
+    else
+        printf("c'est un caractère spécial\n");
+}
+
 int main(){
     tp1();
     tp2();
@@ -115,5 +165,8 @@ int main(){
     tp4();
     tp5();
     tp6();
+    tp7();
+    tp8();
+    tp9();
     return 0;
 }
