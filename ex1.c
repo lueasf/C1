@@ -30,7 +30,7 @@ void tp3(){
     scanf("%d %f", &age, &taille); // permet la lecture de la saisie utilisateur
     // &age sont les addresses mémoires des variables
 
-    fflush(stdin); // permet de vider le buffer de lecture pour pas avoir des retour à la ligne inutiles
+    fflush(stdin); // permet de vider le buffer(zone mémoire) de lecture pour pas avoir des retour à la ligne inutiles
 
     printf("Quel sont vos initiales: ");
     scanf(" %c%c", &prenom, &nom);

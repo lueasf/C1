@@ -7,7 +7,6 @@
 // int resultat = (2*6 == 32);
 // printf(“%d”, resultat);
 // ce programme renvoie 0 car 12 != 32
-
 // rappel : 0 est faux et tous les autres sont vrai
 
 void tp1(){
@@ -128,19 +127,19 @@ void tp8(){
     printf("\t%d ", jour);
     switch(mois){
     case 1:
-        printf("janvier");
+        printf("janvier\n");
     break;
     case 2:
-        printf("février");
+        printf("février\n");
     break;
     case 3:
-        printf("mars"); 
+        printf("mars\n"); 
     break;
     case 4:
-        printf("avril");    
+        printf("avril\n");    
     break;
     default:
-        printf("autre mois");
+        printf("autre mois\n");
     break;}
 }
 
@@ -158,6 +157,34 @@ void tp9(){
         printf("c'est un caractère spécial\n");
 }
 
+void tp10(){
+    int nb1, nb2;
+    char op;
+    printf("donnez une opération:");
+    scanf("%d%c%d", &nb1, &op, &nb2);
+    printf("\t%d %c %d = " , nb1, op, nb2);
+    switch(op){
+        case '+':
+            printf("%d\n", nb1 + nb2);
+        break;
+        case '-':
+            printf("%d\n", nb1 - nb2);  
+        break;
+        case '*':
+            printf("%d\n", nb1 * nb2);
+        break;
+        case '/':
+        if (nb2 != 0)
+            printf("%d\n", nb1 / nb2);
+        else
+            printf("division par zéro impossible\n");
+        break;
+        default:
+            printf("opérateur invalide.\n");
+        break;
+    }
+}
+
 int main(){
     tp1();
     tp2();
@@ -168,5 +195,6 @@ int main(){
     tp7();
     tp8();
     tp9();
+    tp10();
     return 0;
 }
