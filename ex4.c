@@ -77,11 +77,33 @@ void tp5(){
         printf("%d x %d = %d\n", saisie, i, saisie*i); 
 }
 
+// triangle des étoiles
+void tp6() {
+    int nb = 0;
+    const int min = 3, max = 10;
+
+    do {
+        printf("donnez un nombre compris entre %d et %d:", min, max);
+        scanf("%d", &nb);
+    } while (nb < min || nb > max);
+
+    for (int i = 1; i <= nb; i++) {
+        putchar('\n'); // comme printf() mais avec un seul char et tjrs entre ''
+
+        for (int j = 1; j <= nb - i; j++)
+            putchar(' ');
+
+        for (int j = 1; j <= i * 2 -1; j++)
+            putchar('*');
+    }
+}
+
 int main(){
     // tp1();
     // tp2();
     // tp3();
     // tp4();
-    tp5();
+    // tp5();
+    tp6();
     return 0;
 }
