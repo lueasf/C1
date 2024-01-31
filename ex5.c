@@ -27,9 +27,31 @@ void tp2(){
     printf("le nombre %d est stockée à l'adresse %p\n", nombre, p_nombre); // on peut mettre ", *p_nombre, p_nombre); aussi
 }
 
+// inversion de variable en utilisant les pointeurs
+void tp3(){
+    char prenom ='A', nom = 'Z';
+    char* p_prenom = &prenom;
+    char* p_nom = &nom;
+    printf("vos initiales sont %c.%c\n", prenom, nom);
+    char tmp = *p_prenom;
+    *p_prenom = *p_nom; // on écrase le contenu
+    *p_nom = tmp;
+    printf("vos initiales sont %c.%c\n", prenom, nom);
+}
+
+void tp4(){
+    int age = 20;
+    int *p_age = &age;
+    printf("age?");
+    scanf("%d", p_age);
+    printf("vous avez %d ans.\n", age);
+}
+
 int main(){
     // tp0();
     // tp1();
-    tp2();
+    // tp2();
+    // tp3();
+    tp4();
     return 0;
 }
