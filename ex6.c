@@ -33,7 +33,7 @@ void tp1(){
 void tp2(){
     char tab[5] = {'c','a','c','a','o'};
     for (int i =  0; i<5; i++){
-        printf("tab[%d] = %c (%p)\n", i, tab[i], &tab[i] );
+        printf("*(tab + %d) = %c (%p)\n", i, *(tab + i), *(tab + i ));
     }
 }
 
