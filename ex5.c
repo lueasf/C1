@@ -48,10 +48,10 @@ void tp4(){
 }
 
 int main(){
-    // tp0();
-    // tp1();
-    // tp2();
-    // tp3();
+    tp0();
+    tp1();
+    tp2();
+    tp3();
     tp4();
     return 0;
 }
