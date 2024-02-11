@@ -69,8 +69,7 @@ void tp4(){
 }
 
 void tp5(){
-   int saisie;
-   int saisie2;
+   int saisie, saisie2;
    printf("choisir 2 nombre pour voir la table du premier jusqu'au second:");
    scanf("%d %d", &saisie, &saisie2);
    for (int i = 0; i < saisie2 + 1; i++)
@@ -99,11 +98,11 @@ void tp6() {
 }
 
 int main(){
-    // tp1();
-    // tp2();
-    // tp3();
-    // tp4();
-    // tp5();
+    tp1();
+    tp2();
+    tp3();
+    tp4();
+    tp5();
     tp6();
     return 0;
 }
