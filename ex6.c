@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+// inclure l'aléatoire:
+#include <time.h>
 
 // Les tableaux en C
 // en C, le nom du tableau correspond à l'adresse de sa première case
@@ -33,7 +35,7 @@ void tp1(){
 void tp2(){
     char tab[5] = {'c','a','c','a','o'};
     for (int i =  0; i<5; i++){
-        printf("*(tab + %d) = %c (%d)\n", i, *(tab + i), *(tab + i ));
+        printf("*(tab + %d) = %c (%p)\n", i, *(tab + i), (tab + i ));
     }
 }
 
@@ -63,10 +65,55 @@ void tp3(){
 }
 
 
+void tp4(){
+    const int TAILLE = 1000;
+    char lettres[TAILLE];
+    char lettre;
+    srand(time(NULL));     // srand() initialise le générateur de nombres aléatoires
+    for (int i = 0; i < TAILLE; i++){
+        lettres[i] = (char)(rand() % 26 + 65);     // rand() renvoie un nombre aléatoire entre 0 et RAND_MAX
+    }
+    // ici, on veut des lettres majuscules, donc on prend le reste de la division par 26 et on ajoute 65
+    printf("demandez une lettre a rechercher : \n");
+    scanf("%c", &lettre);
+
+    int occ = 0;
+    for (int i = 0; i < TAILLE; i++){
+         if (lettres[i] == lettre){
+            occ++;
+         }   
+    }
+    printf("la lettre %c est presente %d fois.\n", lettre, occ);
+}
+
+void tp5(){
+    const int TAILLE = 1000;
+    char tab[TAILLE], compteur[26];
+    srand(time(NULL));
+    for (int i = 0; i < TAILLE; i++){
+        tab[i] = (char)(rand() % 26 + 65);
+    }
+    for (int i = 0; i <26; i++){
+        compteur[i] = 0;
+    }
+    printf("nombre d'occurences de chaque lettre\n");
+    for (int i = 0; i < TAILLE; i++){
+        if (tab[i] >= 65 && tab[i] <= 90){
+            int index = tab[i] - 65;
+            compteur[index]++;
+        }
+    }
+    for (int i = 0; i< 26; i++){
+        printf("%c : %d\n", i+65, compteur[i]);
+    }
+}
+
 int main(){
-    // tp0();
-    // tp1();
-    // tp2();
+    tp0();
+    tp1();
+    tp2();
     tp3();
+    tp4();
+    tp5();
     return 0;
 }
