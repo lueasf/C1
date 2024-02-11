@@ -108,12 +108,59 @@ void tp5(){
     }
 }
 
+// tri par selection MARCHE PAS
+void tp6(){
+    int tab[7];
+    srand(time(NULL));
+    for (int i = 0; i<7; i ++){
+        tab[i] = rand() % 10  ;
+    }
+    printf("[");
+    for (int i = 0; i< 7 ; i++)
+        printf("%d ", tab[i]);
+    printf("]\n");
+
+    for (int i = 0; i<6; i++){
+        int index = i;
+        int tmp = tab[i];
+
+        for (int j = i+1; j<7; j++){
+            if (tab[j] < tab[index])
+            index = j;
+
+        if (i != index){
+        tab[i] = tab[index];
+        tab[index] = tab[tmp];}
+        }
+    }
+    printf("tri par selection : [");
+    for (int i = 0; i<7; i++){
+        printf("%d", tab[i]);
+    printf("]\n");
+    }
+}
+
+// TRI BULLE 
+void tp7(){
+    int tab[7];
+    srand(time(NULL));
+    for (int i = 0; i<7; i ++){
+        tab[i] = rand() % 10  ;
+    }
+    printf("[");
+    for (int i = 0; i< 7 ; i++)
+        printf("%d ", tab[i]);
+    printf("]\n");
+}
+
 int main(){
-    tp0();
-    tp1();
-    tp2();
-    tp3();
-    tp4();
-    tp5();
+    // tp0();
+    // tp1();
+    // tp2();
+    // tp3();
+    // tp4();
+    // tp5();
+    // tp6();
+    tp7();
     return 0;
 }
