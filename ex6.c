@@ -143,6 +143,7 @@ void tp6(){
 // TRI BULLE 
 void tp7(){
     int tab[7];
+    int triterminé = 0;
     srand(time(NULL));
     for (int i = 0; i<7; i ++){
         tab[i] = rand() % 10  ;
@@ -151,6 +152,52 @@ void tp7(){
     for (int i = 0; i< 7 ; i++)
         printf("%d ", tab[i]);
     printf("]\n");
+
+    // tri bulle : 
+    while (!triterminé){
+        triterminé = 1;
+
+        for (int i = 0; i< 6; i++){
+            if (tab[i] > tab[i+1]){
+                triterminé = 0;
+                int tmp = tab[i];
+                tab[i] = tab[i+1];
+                tab[i+1] = tmp;
+            }
+        }
+    }
+
+    printf("tri bulle : [");
+    for (int i = 0; i<7; i++)
+        printf("%d ", tab[i]);
+    printf("]\n");
+}
+
+// matrice unitaire
+void tp8(){
+    const int TAILLE = 4;
+    int matrice[TAILLE][TAILLE];
+
+    for (int i = 0; i<TAILLE; i++){
+        for (int j = 0; j<TAILLE; j++){
+            if (j==i)
+                matrice[i][j] = 1;
+            else
+                matrice[i][j] = 0;
+        }
+    }
+    printf("matrice: \n");
+    for (int i = 0; i<TAILLE; i++){
+        for (int j = 0; j< TAILLE; j++){
+            printf("%d ", matrice[i][j]);
+        }
+        putchar('\n'); // RAPPEL PUTCHAR AVEC LES GUILLEMETS SIMPLES PTN DE MERDE
+    }
+}
+
+// addition matricielle
+void tp9(){
+
 }
 
 int main(){
@@ -162,5 +209,7 @@ int main(){
     // tp5();
     // tp6();
     tp7();
+    tp8();
+    tp9();
     return 0;
 }
