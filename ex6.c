@@ -197,7 +197,23 @@ void tp8(){
 
 // addition matricielle
 void tp9(){
+    int mata[3][2] = { 
+        {1, 3},
+        {1, 0},
+        {1, 2}
+    };
 
+    int matb[3][2] = { 
+        {0, 0},
+        {7, 5},
+        {2, 1}
+    };
+    for (int i = 0; i<3; i++){
+        for (int j = 0; j<2; j++){
+            printf("%d ", mata[i][j] + matb[i][j]);
+        }
+        putchar('\n');
+    }
 }
 
 int main(){
@@ -208,8 +224,8 @@ int main(){
     // tp4();
     // tp5();
     // tp6();
-    tp7();
-    tp8();
+    // tp7();
+    // tp8();
     tp9();
     return 0;
 }
