@@ -216,6 +216,33 @@ void tp9(){
     }
 }
 
+// produit matricielle
+void tp10(){
+    int mata[2][3] = {
+        {1, 2, 0},
+        {4, 3, -1}
+    };
+    int matb[3][2] = {
+        {5, 1},
+        {2, 3},
+        {3, 4}
+    };
+    for (int i = 0; i<2; i++)
+    {
+        for (int j = 0; j<2; j++)
+        {
+            int res = 0;
+            for (int k = 0; k<3; k++)
+            {
+                res += mata[i][k]*matb[k][j];
+            }
+            printf("%d ", res);
+        }
+        putchar('\n');
+}
+}
+
+
 int main(){
     // tp0();
     // tp1();
@@ -226,6 +253,7 @@ int main(){
     // tp6();
     // tp7();
     // tp8();
-    tp9();
+    // tp9();
+    tp10();
     return 0;
 }
