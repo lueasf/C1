@@ -63,10 +63,33 @@ void tp4(){
     putchar('\n');
 }
 
+//Création de mot de passe
+void tp5(){
+    const int TAILLE = 100;
+    const int MIN = 5;
+    const int MAX = 10;
+    char mdp[TAILLE + 1];
+    int taille_mdp = 0;
+
+    printf("donnez un mdp: \n");
+    if (fgets(mdp, 100, stdin) == NULL)
+        printf("Erreur de lecture\n");
+    taille_mdp = strlen(mdp) - 1; // on enlève le \n
+    mdp[taille_mdp] = '\0'; // on remplace le \n par \0
+
+    if (taille_mdp < MIN || taille_mdp > MAX)
+        printf("le mdp doit [5-10] char.\n");
+    
+    int maj = 0;
+    int special = 0;
+    int chiffre = 0;
+}
+
 int main(){
     tp1();
     tp2();
     tp3();
     tp4();
+    tp5();
     return 0;
 }
