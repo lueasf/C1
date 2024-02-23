@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <unistd.h> // pour sleep
+#include <string.h> // pour les chaines de char
 
 // Les chaines de char
 
@@ -43,9 +44,29 @@ void tp3(){
     printf("%s\n", chaine);
 }
 
+// reverse la chaîne
+void tp4(){
+    const int TAILLE = 10;
+    char tab[TAILLE + 1];
+    printf("chaine :");
+    if (fgets(tab, 100, stdin)== NULL)
+        printf("Erreur de lecture\n");
+    int taille = strlen(tab); // retourne la taille de la chaine 
+    // (sans le \0) donc on doit enlever 1 
+    taille --;
+    tab[taille] = '\0'; // on remplace le \n par \0
+    printf("effet miroir :\n");
+    printf("%s | ", tab);
+    for (int i = (taille -1); i>=0 ; i --){
+        putchar(tab[i]);
+    }
+    putchar('\n');
+}
+
 int main(){
     tp1();
     tp2();
     tp3();
+    tp4();
     return 0;
 }
