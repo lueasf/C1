@@ -63,60 +63,21 @@ void tp4(){
     putchar('\n');
 }
 
-//Création de mot de passe
-void tp5(){
+// creer la fonction strln
+void tp6(){
     const int TAILLE = 100;
-    const int MIN = 5;
-    const int MAX = 10;
-    char mdp[TAILLE + 1];
-    int taille_mdp = 0;
-
-    int valide = 0;
-    do
-    {
-        printf("donnez un mdp: \n");
-        if (fgets(mdp, 100, stdin) == NULL)
-            printf("Erreur de lecture\n");
-        taille_mdp = strlen(mdp) - 1; // on enlève le \n
-        mdp[taille_mdp] = '\0'; // on remplace le \n par \0
-
-        if (taille_mdp < MIN || taille_mdp > MAX)
-            printf("le mdp doit [5-10] char.\n");
-            continue; // comme un break, arrete l'execution de la boucle courante
-        
-        int maj = 0;
-        int special = 0;
-        int chiffre = 0;
-
-        for (int i = 0; i<taille_mdp; i++){
-            if (mdp[i] >= 'A' && mdp[i] <= 'Z')
-                maj = 1;
-            else if (mdp[i] >= '0' && mdp[i] <= '9')
-                chiffre = 1;
-            else if (mdp[i] < 'a' || mdp[i] > 'z')
-                special = 1;    if (maj == 0)
-        printf("le mdp doit contenie au moins 1 majuscule.\n");
-        }
-
-        if (maj == 0)
-            printf("le mdp doit contenie au moins 1 majuscule.\n");
-            continue;
-
-        if (special == 0)
-            printf("le mdp doit contenie au moins 1 char spécial.\n");
-            continue;
-
-        if (chiffre == 0)
-            printf("le mdp doit contenie au moins 1 chiffre.\n");
-            continue;
-        valide == 1;
-}while(valide == 0); // tant que valide = 0, on continue la boucle while
+    char msg[TAILLE + 1]; // tableau
+    printf("entre une chaine de char.\n");
+    if (fgets (msg, TAILLE, stdin) ==  NULL)
+        printf("chaine vide.\n");     
 }
+
 
 int main(){
     tp1();
     tp2();
     tp3();
     tp4();
+    tp6();
     return 0;
 }
