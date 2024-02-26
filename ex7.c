@@ -67,17 +67,119 @@ void tp4(){
 void tp6(){
     const int TAILLE = 100;
     char msg[TAILLE + 1]; // tableau
+    int index = 0;
+
     printf("entre une chaine de char.\n");
     if (fgets (msg, TAILLE, stdin) ==  NULL)
         printf("chaine vide.\n");     
+
+    // calcul :
+    while( msg[index] != '\0'){
+        index ++;
+    }
+
+    printf("taille de la chaine : %d.\n", index);
+    // on aura un char de plus avec le \n
+}
+
+//créer la fonction strcmp (ORDRE LEXICOGRAPHIQUE)
+void tp7(){
+    const int TAILLE = 100;
+    char msg[TAILLE + 1]; // tableau
+    const char  CODE[] = "CODEUR";
+    int index = 0;
+    int res = 0; // les deux chaines sont égales.
+
+    printf("entre une chaine de char en majuscule.\n");
+    scanf("%s", msg); 
+
+    while( msg[index] != '\0' && CODE[index] != '\0' ){
+        if (msg[index] < CODE[index]){
+            res = -1; // msg est plus proche ds l'ordre lexicographique
+            break; // permet de sortir de la boucle 
+        }
+        else if (msg[index] > CODE[index]){
+            res = 1; // msg est plus loin dans l'ordre alphabétique
+            break;
+        }
+        index ++;
+    }
+    printf("%s ", msg);
+    if (res > 0 )
+        putchar('>');
+    else if (res < 0)
+        putchar('<');
+    printf(" %s.\n", CODE);
+}
+
+// fonction strtol
+// convertir un nombre ecrit en str sous forme de nb
+// RAPPEL : LE '\0', C'EST POUR LES STR, PAS LES TABLEAUX
+void tp8(){
+    char prix[100];
+    int index = 0;
+    const int CHAR_TO_INT = '0';
+    int euro = 0;
+
+    printf("donnez un prix (nb) en euro : \n");
+    scanf("%s", prix);
+
+    // conversion en entier de la saisie:
+    while (prix[index] != '\0')
+    {
+            if (prix[index] >= '0' && prix[index] <='9')
+            {
+                int entier = prix[index] - CHAR_TO_INT;
+                euro = 10*euro + entier;
+            }
+            else{
+                break;
+            }
+        index ++;
+    }
+    printf("votre entier : %d.\n", euro);
+}
+// hum...
+
+
+//enlever les espaces d'une chaîne.
+void tp9(){
+    const int TAILLE = 100;
+    char chaine[TAILLE];
+
+    printf("donnez une chaine de char avec espaces : \n");
+    if (fgets(chaine, TAILLE, stdin) == NULL){
+        printf("chaine vide.\n");
+    }
+
+    // ON RETIRE LE \n
+    int taille_msg = strlen(chaine) -1;
+    chaine[taille_msg] = '\0';
+
+    for (int i= 0; i<taille_msg; i++){
+        if (chaine[i] == ' '){
+            strcpy(chaine + i, chaine + i + 1); // on copie 
+            // le char à la case i+1 ds la case i
+            i--;
+            taille_msg--;
+        }
+    }
+    printf("sans espaces : %s.\n", chaine);
 }
 
 
+// calcul de la taille d'un tableau d'entier : 
+// int tab[] = {1, 2, 3, 4, 5};
+//     int taille = sizeof(tab) / sizeof(tab[0]);
+
 int main(){
-    tp1();
-    tp2();
-    tp3();
-    tp4();
-    tp6();
+    // tp1();
+    // tp2();
+    // tp3();
+    // tp4();
+    // tp6();
+    // tp7();
+    // tp8();
+    tp9();
     return 0;
 }

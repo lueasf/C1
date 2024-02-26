@@ -25,7 +25,8 @@ int main(){
 
         if (taille_mdp < MIN || taille_mdp > MAX){
             printf("le mdp doit [5-10] char.\n");
-            continue; // comme un break, arrete l'execution de la boucle courante
+            continue; // permet de passer à l'itération suivante, contraireent au break qui sort
+            //de la boucle 
             }   
         int maj = 0;
         int special = 0;
