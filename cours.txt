@@ -1,0 +1,19 @@
+COURS DE C THÉORIQUE
+
+
+
+###
+
+scanf peut lire des caractères individuels et des entiers.
+fgets peut lire des lignes de texte dans un tableau de caractères (char).
+fgetc peut lire des caractères individuels à partir d'un flux de fichier.
+
+####
+Opérateur ternaire (? :) :
+
+C'est une expression conditionnelle qui permet de réaliser une opération basée sur une condition. 
+Sa syntaxe générale est (condition) ? valeur_si_vrai : valeur_si_faux.
+
+EXEMPLE : 
+return (n == 0) ? 0 : n + somme(n - 1);
+veut dire que si n vaut 0 on renvoie 0 sinon on renvoie n + somme(n-1)
