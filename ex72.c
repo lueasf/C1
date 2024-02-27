@@ -19,7 +19,8 @@ int main(){
     if (fgets(tab, TAILLE, stdin) == NULL)
         return -1;
 
-    while (tab[index] != '\0'){
+    while (tab[index] != '\0')
+    {
         if(tab[index]==' '){
             mots++;
         }

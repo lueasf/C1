@@ -173,13 +173,13 @@ void tp9(){
 //     int taille = sizeof(tab) / sizeof(tab[0]);
 
 int main(){
-    // tp1();
-    // tp2();
-    // tp3();
-    // tp4();
-    // tp6();
-    // tp7();
-    // tp8();
+    tp1();
+    tp2();
+    tp3();
+    tp4();
+    tp6();
+    tp7();
+    tp8();
     tp9();
     return 0;
 }
