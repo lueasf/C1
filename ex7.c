@@ -139,10 +139,10 @@ void tp8(){
     }
     printf("votre entier : %d.\n", euro);
 }
-// hum...
 
 
 //enlever les espaces d'une chaîne.
+// MARCHE PO
 void tp9(){
     const int TAILLE = 100;
     char chaine[TAILLE];
