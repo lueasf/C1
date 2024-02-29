@@ -12,7 +12,7 @@
 int main(){
     int vies = 10;
 
-    char mot[] = "programme";
+    char mot[] = "flaubert";
     int taille_mot = strlen(mot);
     char saisie[taille_mot + 1];
 
