@@ -4,10 +4,6 @@
 
 //les conditions en C
 
-// int resultat = (2*6 == 32);
-// printf(“%d”, resultat);
-// ce programme renvoie 0 car 12 != 32
-// rappel : 0 est faux et tous les autres sont vrai
 
 void tp1(){
     int age;

@@ -4,7 +4,6 @@
 #include <time.h>
 
 // Les tableaux en C
-// en C, le nom du tableau correspond à l'adresse de sa première case
 
 // afficher un tableau
 void tp0(){

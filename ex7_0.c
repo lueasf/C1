@@ -110,12 +110,9 @@ void tp7(){
     else if (res < 0)
         putchar('<');
     printf(" %s.\n", CODE);
-}
 
-// fonction strtol
-// convertir un nombre ecrit en str sous forme de nb
-// RAPPEL : LE '\0', C'EST POUR LES STR, PAS LES TABLEAUX
-void tp8(){
+void tp8()
+    {
     char prix[100];
     int index = 0;
     const int CHAR_TO_INT = '0';
@@ -139,7 +136,6 @@ void tp8(){
     }
     printf("votre entier : %d.\n", euro);
 }
-
 
 //enlever les espaces d'une chaîne.
 // MARCHE PO
@@ -168,9 +164,7 @@ void tp9(){
 }
 
 
-// calcul de la taille d'un tableau d'entier : 
-// int tab[] = {1, 2, 3, 4, 5};
-//     int taille = sizeof(tab) / sizeof(tab[0]);
+
 
 int main(){
     tp1();

@@ -106,22 +106,3 @@ int main(){
     tp6();
     return 0;
 }
-
-/*
-RAPPEL :
-
-while (condition) {
-    // Bloc de code à exécuter tant que la condition est vraie
-}
-
-La boucle while teste la condition avant d'exécuter le bloc de 
-code à l'intérieur de la boucle. 
-
-
-do {
-    // Bloc de code à exécuter au moins une fois
-} while (condition);
-
-Cela garantit que le bloc de code est exécuté au moins une fois, 
-meme si la condition est fausse dès le départ.
-*/

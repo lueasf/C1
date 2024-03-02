@@ -2,18 +2,111 @@ COURS DE C THÉORIQUE
 
 
 
-###
+### Les %qqch:
+%d pour digits (int et short), 
+%ld pour long unsigned, 
+%f pour float et double
+%.2f pour 2 chiffres après la virgule
+%d pour char
+%s pour string
+%x pour hexadécimal
+%p pour l'adresse
 
+-un entier prends en memoire %ld octets (sizeof(entier))
+-(float)( a + b) pour caster (changer de type)
+-un charactère est aussi un nombre ASCII
+
+&& (et) || (ou)
+
+
+
+###Les librairies
+stdlib -> pour les fonctions exit, malloc, free, ...
+stdio -> pour les fonctions d'entrée/sortie comme printf, scanf, stdin 
+math.h -> round, sqrt
+unistd.h -> sleep
+time.h -> aléatoire : srand(time(NULL)); rand() % 26 + 65
+string.h -> chaine de char (strlen, strcmp(ordre lexicogrp test)),
+    strtol (convertit un nombre en str en int).
+    strcpy(dans celle la, on copie cette case)
+
+
+
+###POINTEURS
+
+
+
+###fonctions
 scanf peut lire des caractères individuels et des entiers.
+scanf("%d", &var)
+fflsuh(stdin) pour vider le buffer de lecture
 fgets peut lire des lignes de texte dans un tableau de caractères (char).
 fgetc peut lire des caractères individuels à partir d'un flux de fichier.
+putchar(' ')
+printf(" ")
 
-####
-Opérateur ternaire (? :) :
+// int resultat = (2*6 == 32);
+// printf(“%d”, resultat);
+// ce programme renvoie 0 car 12 != 32
+// rappel : 0 est faux et tous les autres sont vrai
 
+
+
+####Opérateur ternaire (? :) :
 C'est une expression conditionnelle qui permet de réaliser une opération basée sur une condition. 
 Sa syntaxe générale est (condition) ? valeur_si_vrai : valeur_si_faux.
-
 EXEMPLE : 
 return (n == 0) ? 0 : n + somme(n - 1);
 veut dire que si n vaut 0 on renvoie 0 sinon on renvoie n + somme(n-1)
+
+
+
+###condition
+switch(var){
+    case 1:
+    printf
+    break;
+    case2:...
+    default:
+}
+
+
+
+###boucle
+FOR : for (int i =0; i<10; i++){}
+continue pour passer à l'itération suivante
+break pour quitter la boucle 
+
+WHILE : while (condition) {
+    // Bloc de code à exécuter tant que la condition est vraie
+}
+La boucle while teste la condition avant d'exécuter le bloc de 
+code à l'intérieur de la boucle. 
+
+DO : do {
+    // Bloc de code à exécuter au moins une fois
+} while (condition);
+
+Cela garantit que le bloc de code est exécuté au moins une fois, 
+meme si la condition est fausse dès le départ.
+
+
+
+###TABLEAU
+le nom du tableau correspond à l'adresse de sa première case.
+int tab[taille] = {,,}
+tab[i] = *(tab + 1)
+tab -> str : char ch[] = {'o', 'l', 'a', '\0'}; printf("%s",ch);
+fgets(tab,taille, stdin)==NULL{return -1}
+rappel : LE '\0', C'EST POUR LES STR, PAS LES TABLEAUX
+
+// calcul de la taille d'un tableau d'entier : 
+// int tab[] = {1, 2, 3, 4, 5};
+//     int taille = sizeof(tab) / sizeof(tab[0]);
+
+
+
+###fonctions
+signature : type nom(type1, type2);
+fonction main
+déclaration de fonction 
