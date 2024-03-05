@@ -33,7 +33,15 @@ string.h -> chaine de char (strlen, strcmp(ordre lexicogrp test)),
 
 
 ###POINTEURS
-
+C'est un type qui ne contient pas une valeur mais une adresse mémoire. Les tableaux sont des pointeurs.
+int a = 5;
+int *p = &a; // p pointe vers a
+OU :
+int *p;
+p = &a; // on attribue l'adresse de a à p
+Les deux sont des alias, on peut donc modifier a en modifiant p.
+Reserver dynamiquement de la mémoire :
+int *p = (int *)malloc(sizeof(int)); attention malloc renvoie untype void donc on convertit en int*.
 
 
 ###fonctions
