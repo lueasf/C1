@@ -1,5 +1,11 @@
 COURS DE C THÉORIQUE
 
+### Les compilateurs
+gcc -o nom_du_fichier nom_du_fichier.c
+clang -o nom_du_fichier nom_du_fichier.c
+
+
+### Makefile
 
 
 ### Les %qqch:
@@ -15,6 +21,7 @@ COURS DE C THÉORIQUE
 -un entier prends en memoire %ld octets (sizeof(entier))
 -(float)( a + b) pour caster (changer de type)
 -un charactère est aussi un nombre ASCII
+-les booleens sont 0 = faux et tous les autres = vrai
 
 && (et) || (ou)
 
@@ -49,6 +56,10 @@ LOL : un pointeur peut pointer sur un pointeur (ex une matrice).
 free(p) pour libérer la mémoire
 const int *p; on peut modifier p mais pas *p
 int * const p; on peut modifier *p mais pas p
+char *s = "hello";
+char c = *s; c = 
+ascii(\0) = 0!!!
+
 
 
 ###fonctions
@@ -107,21 +118,36 @@ meme si la condition est fausse dès le départ.
 
 
 
-###TABLEAU
+### TABLEAU
 le nom du tableau correspond à l'adresse de sa première case.
 int tab[taille] = {,,}
 tab[i] = *(tab + 1)
 tab -> str : char ch[] = {'o', 'l', 'a', '\0'}; printf("%s",ch);
+char *s = "hello"; printf("%s",s);
 fgets(tab,taille, stdin)==NULL{return -1}
 rappel : LE '\0', C'EST POUR LES STR, PAS LES TABLEAUX
-
 // calcul de la taille d'un tableau d'entier : 
 // int tab[] = {1, 2, 3, 4, 5};
-//     int taille = sizeof(tab) / sizeof(tab[0]);
+// int taille = sizeof(tab) / sizeof(tab[0]);
+// tableau de 0 : int tab[10] = {0};
+
+char *s = "hello"; codé en dur
+int len = 0;
+while (*s != '\0') {
+    len++;
+    s++;
+}
 
 
-
-###fonctions
+### fonctions
 signature : type nom(type1, type2);
 fonction main
 déclaration de fonction 
+
+
+
+### Zones de mémoires
+pile : utilisé pour les var locales
+zone non modifiable : chaine constante
+tas (heap) : utilisé pour aloouer de la mémoire (ex:malloc)
+
