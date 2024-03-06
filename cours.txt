@@ -151,3 +151,32 @@ pile : utilisé pour les var locales
 zone non modifiable : chaine constante
 tas (heap) : utilisé pour aloouer de la mémoire (ex:malloc)
 
+
+
+### fichier
+int main() {
+    FILE *fichier;
+    char caractere;
+    fichier = fopen("chemin/vers/le/fichier.txt", "r");
+
+    if (fichier == NULL) {
+        printf("Impossible d'ouvrir le fichier.\n");
+        return 1;
+    }
+
+    while ((caractere = fgetc(fichier)) != EOF) {
+        printf("%c", caractere);
+    }
+
+    fclose(fichier);
+
+    return 0;
+}
+
+
+### COMPILATION :
+zero overhead principle
+#include
+#define
+#ifdef
+
