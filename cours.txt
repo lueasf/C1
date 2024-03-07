@@ -6,6 +6,17 @@ clang -o nom_du_fichier nom_du_fichier.c
 
 
 ### Makefile
+CFLAGS = -std=c99 -Wall -Wextra -pedantic -g3 -fsanitize=address
+LDFLAGS = -fsanitize=address
+LIBS =
+main: main.o module.o
+    clang -o main $(LDFLAGS) module.o main.o $(LIBS)
+module.o: module.c module.h
+    clang -c $(CFLAGS) module.c
+main.o: main.c main.h
+    clang -c $(CFLAGS) main.c
+clean:
+    rm -f main *.o
 
 
 ### Les %qqch:
@@ -155,9 +166,8 @@ tas (heap) : utilisé pour aloouer de la mémoire (ex:malloc)
 
 ### fichier
 int main() {
-    FILE *fichier;
+    FILE *fichier = fopen("chemin/vers/le/fichier.txt", "r");
     char caractere;
-    fichier = fopen("chemin/vers/le/fichier.txt", "r");
 
     if (fichier == NULL) {
         printf("Impossible d'ouvrir le fichier.\n");
@@ -167,6 +177,11 @@ int main() {
     while ((caractere = fgetc(fichier)) != EOF) {
         printf("%c", caractere);
     }
+    OU
+    char buffer[100];
+    while (fgets(buffer, 100, fichier) != NULL) {
+        printf("%s", buffer);
+    }
 
     fclose(fichier);
 
@@ -174,9 +189,51 @@ int main() {
 }
 
 
-### COMPILATION :
+### COMPILATION ET PRÉPROCESSEUR:
 zero overhead principle
 #include
-#define
+#define NOM VALEUR , on l'inclut dans le fichier et on peut l'utiliser,
+le nom, comme une variable.
 #ifdef
 
+
+
+### fichiers:
+dans mod.c on met la fonction et la DÉFINITION
+dans le mod.h on DÉCLARE la fonction
+dans le main.c on met la main et on inclut le mod.h
+
+
+
+### ???
+fscanf(fichier, "%d", &var);
+fread
+fseek
+ftell
+rewind
+ferror
+feof
+fclose
+fputc
+fwrite
+fprintf
+
+
+
+### STRUCTURES
+pour modéliser des données
+nommer un type : typedef struct nom;
+struct Array {
+    int *tab;
+    int size;
+};
+
+
+
+
+### opératinos bits à bits:
+0xF7 & 0xAC = 1010 0100 = 0xA4
+Les opérateurs << et >> permettent de décaler la
+représentation binaire vers la gauche ou la droite
+4 << 1 = 0100 << 1 = 1000 = 8
+0xF7 << 4 = 0111 0000 = 0x70
