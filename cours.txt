@@ -221,12 +221,44 @@ fprintf
 
 
 ### STRUCTURES
-pour modéliser des données
-nommer un type : typedef struct nom;
+STRUCT : pour modéliser des données personnalisées: 
+
 struct Array {
     int *tab;
     int size;
 };
+
+struct Person {
+    char name[50];
+    int age;
+    char address[100];
+};
+
+TYPEDEF utilisé pour définir un alias pour un type de données existant.
+typedef struct Person Person;
+#maintenant on peut utiliser Person comme un vrai type:
+Person p1; qui équivaut à struct Person p1;
+
+On peut combiner les deux : 
+typedef struct {
+    char name[50];
+    int age;
+} Person;
+
+EXEMPLE :
+
+int main() {
+    // Déclaration d'une variable de type Person
+    Person person1;
+    
+    strcpy(person1.name, "John");
+    person1.age = 30;
+
+    printf("Nom: %s\n", person1.name);
+    printf("Age: %d\n", person1.age);
+    
+    return 0;
+}
 
 
 
