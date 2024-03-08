@@ -247,7 +247,7 @@ typedef struct {
 
 EXEMPLE :
 
-int main() {
+int main(){
     // Déclaration d'une variable de type Person
     Person person1;
     
