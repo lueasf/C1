@@ -42,6 +42,8 @@ clean:
 stdlib -> pour les fonctions exit, malloc, free, ...
 stdio -> pour les fonctions d'entrée/sortie comme printf, scanf, stdin 
 math.h -> round, sqrt
+// en utilisant sqrt, il faut compiler avec -lm à la fin pour (lib math)
+
 unistd.h -> sleep
 time.h -> aléatoire : srand(time(NULL)); rand() % 26 + 65
 string.h -> chaine de char (strlen, strcmp(ordre lexicogrp test)),
@@ -244,6 +246,9 @@ typedef struct {
     char name[50];
     int age;
 } Person;
+
+p_carte-> fig = rand() % 13 + 1; // permet de générer un nombre entre 1 et 13
+// la notation p_carte -> fig est équivalente à (*p_carte).fig 
 
 EXEMPLE :
 
