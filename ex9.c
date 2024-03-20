@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+
+#define TAILLE 15
 // en utilisant sqrt, il faut compiler avec -lm à la fin pour (lib math)
 
 // 9 : Les types personnalisés
@@ -16,7 +18,7 @@ typedef struct PIXEL{
 }Pixel;
 
 void pixelInfo(Pixel pix){
-    printf("Pixel :\n");
+    printf("Pixel de taille %d:\n", TAILLE);
     printf("\t x: %d\n\t y: %d\n\t color: %s\n",pix.coorx, pix.coory, pix.color);
 }
 
@@ -81,19 +83,19 @@ void carteAléatoire(Carte *p_carte){
 }
 
 int main(){
-    // // EX1
-    // Pixel pix1 = {12,3,"Red"};
-    // pixelInfo(pix1);
-    // putchar('\n');
+    // EX1
+    Pixel pix1 = {12,3,"Red"};
+    pixelInfo(pix1);
+    putchar('\n');
 
-    // // EX2
-    // Point p1 = {3,4}, p2 = {1,9};
-    // distance(p1,p2);
+    // EX2
+    Point p1 = {3,4}, p2 = {1,9};
+    distance(p1,p2);
 
-    // putchar('\n');
-    // // EX3
-    // Carte c = {COEUR,AS};
-    // infoCarte(c);
+    putchar('\n');
+    // EX3
+    Carte c = {COEUR,AS};
+    infoCarte(c);
     srand(time(NULL));
 
     Carte macarte;

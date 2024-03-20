@@ -55,7 +55,8 @@ string.h -> chaine de char (strlen, strcmp(ordre lexicogrp test)),
 ###POINTEURS
 C'est un type qui ne contient pas une valeur mais une adresse mémoire. Les tableaux sont des pointeurs.
 int a = 5;
-int *p = &a; // p pointe vers a
+int *p = &a; // p pointe vers l'adresse de a ( on dit aussi que p pointe sur a)
+&a c'est une adresse, *a c'est la valeur.
 OU :
 int *p;
 p = &a; // on attribue l'adresse de a à p
@@ -274,3 +275,93 @@ Les opérateurs << et >> permettent de décaler la
 représentation binaire vers la gauche ou la droite
 4 << 1 = 0100 << 1 = 1000 = 8
 0xF7 << 4 = 0111 0000 = 0x70
+
+
+### TRUC
+#1
+int* bad_answer_to_life(void) {
+    int answer = 1;
+    return &answer;
+}
+Cette fonction renvoie un pointeur vers un entier qui 
+n'existe plus après l'exécution de la fonction. Car la variable
+est locale.
+
+#2
+int main(void) {
+    char *msg = "ooki";
+    *msg = 'd';
+    printf("%s\n", msg);
+}
+Cette fonctionne compile pas sans erreur car les chaînes stoquées en 
+dur sont en lecture seule.
+La solution est d'utiliser un tableau:
+int main(void){
+    char msg[] = "ooki";
+    *msg = 'd';
+    printf("%s\n", msg);
+}
+qui renvoie alors "doki".
+
+#3
+int main(void) {
+    int tab[3];
+
+    tab[0] = 1;
+    tab[1] = 2;
+    tab[2] = 3;
+
+    printf("tab = %p\n", tab);
+    printf("&tab = %p\n", &tab);
+    printf("tab[0] = %d\n", tab[0]);
+    printf("&tab[0] = %p\n", &tab[0]);
+
+    int t2[3];
+    tab = t2;
+}
+Ici l'erreur de un problème de type. En effet, tab et t2 sont de memes types
+donc la syntaxe est correcte mais la sémantique fait defaut.
+L'erreur est un peu nulle, elle ne devrait pas avoir lieu.
+On la corrige en mettant *tab = &t2
+
+#4
+malloc :
+void * malloc( size_t memorySize );
+
+Cette fonction permet d'allouer un bloc de mémoire dans le tas. 
+Attention : la mémoire allouée dynamiquement n'est pas automatiquement
+relachée. Il faudra donc, après utilisation, libérer ce bloc de 
+mémoire via un appel à la fonction free. 
+exemple :
+int *tab = (int *)malloc(10 * sizeof(int));
+ce qui alloue un tableau de 10 entiers.
+
+calloc :
+void * calloc( size_t numElements, size_t elementSize );
+calloc permet d'allouer un bloc de mémoire et de l'initialiser à 0.
+exemple :
+int *tab = (int *)calloc(10, sizeof(int));
+ce qui alloue un tableau de 10 entiers initialisés à 0.
+
+
+
+
+### CONCEPT:
+FUITE MÉMOIRE AKA MEMORY LEAKS:
+C'est un problème qui survient lorsqu'un programme alloue de la mémoire
+dynamiquement mais ne la libère pas. Cela peut entrainer une utilisation
+excessive de la mémoire et des problèmes de performances.
+Pour pallier a ce problème on peut utiliser la fonction free qui permet
+de libérer la mémoire allouée dynamiquement.
+
+DÉPASSEMENT DE TAMPON AKA OVERFLOW:
+C'est un problème qui survient lorsqu'un programme écrit en dehors des
+limites d'un tableau. Cela peut entrainer des comportements inattendus
+et des problèmes de sécurité. Pour éviter ce problème, il est important
+de vérifier les limites du tableau avant d'écrire dedans.
+exemple :
+int tab[10];
+for (int i = 0; i < 11; i++) {
+    tab[i] = i;
+}
+on écrit en dehors des limites du tableau donc problème.
