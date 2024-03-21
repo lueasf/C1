@@ -353,6 +353,8 @@ dynamiquement mais ne la libère pas. Cela peut entrainer une utilisation
 excessive de la mémoire et des problèmes de performances.
 Pour pallier a ce problème on peut utiliser la fonction free qui permet
 de libérer la mémoire allouée dynamiquement.
+L'option -fsanitize=address détecte ces fuites.
+
 
 DÉPASSEMENT DE TAMPON AKA OVERFLOW:
 C'est un problème qui survient lorsqu'un programme écrit en dehors des
@@ -365,3 +367,9 @@ for (int i = 0; i < 11; i++) {
     tab[i] = i;
 }
 on écrit en dehors des limites du tableau donc problème.
+
+
+
+###GDB
+voici comment on utilise gdb :
+gdb ./nom_du_fichier
