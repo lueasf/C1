@@ -80,9 +80,15 @@ ascii(\0) = 0!!!
 ###fonctions
 scanf peut lire des caractères individuels et des entiers.
 scanf("%d", &var)
+fscanf(fichier, "%d", &var) pour lire dans "fichier" un entier et le stocker dans "var"
 fflsuh(stdin) pour vider le buffer de lecture
 fgets peut lire des lignes de texte dans un tableau de caractères (char).
 fgetc peut lire des caractères individuels à partir d'un flux de fichier.
+en gros : on lit char par char sur 
+    while(res != EOF){
+        res = fgetc(f);
+        printf("%c", (char)res);
+    }
 putchar(' ')
 printf(" ")
 
@@ -373,4 +379,5 @@ on écrit en dehors des limites du tableau donc problème.
 
 ###GDB
 voici comment on utilise gdb :
-gdb ./nom_du_fichier
+gdb ./nom_du_fichierTexte écrit par prog.
+Texte écrit par prog.
