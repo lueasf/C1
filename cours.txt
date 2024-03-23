@@ -63,6 +63,7 @@ p = &a; // on attribue l'adresse de a à p
 Les deux sont des alias, on peut donc modifier a en modifiant p.
 Reserver dynamiquement de la mémoire :
 int *p = (int *)malloc(sizeof(int)); attention malloc renvoie untype void donc on convertit en int*.
+on a aussi realloc
 D'OU:
 p pointeur => *p valeur, p adresse
 n non pointeur => n valeur,  &adresse
