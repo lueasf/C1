@@ -1,6 +1,7 @@
 COURS DE C THÉORIQUE
 
 ### Les compilateurs
+pour créer un .o on utilise -c
 gcc -o nom_du_fichier nom_du_fichier.c
 clang -o nom_du_fichier nom_du_fichier.c
 
@@ -15,6 +16,8 @@ module.o: module.c module.h
     clang -c $(CFLAGS) module.c
 main.o: main.c main.h
     clang -c $(CFLAGS) main.c
+run: main
+	./main
 clean:
     rm -f main *.o
 
@@ -24,7 +27,7 @@ clean:
 %ld pour long unsigned, 
 %f pour float et double
 %.2f pour 2 chiffres après la virgule
-%d pour char
+%c pour char
 %s pour string
 %x pour hexadécimal
 %p pour l'adresse
@@ -38,11 +41,17 @@ clean:
 
 
 
-###Les librairies
+###Les librairies & macros ( code definie ds un fichier et reutilisable comme un include ou un define)
+#define CARRE(x) ((x) * (x)), ca marche aussi avec des variables.
+
 stdlib -> pour les fonctions exit, malloc, free, ...
 stdio -> pour les fonctions d'entrée/sortie comme printf, scanf, stdin 
 math.h -> round, sqrt
 // en utilisant sqrt, il faut compiler avec -lm à la fin pour (lib math)
+<assert.h> -> assert
+assert(x == 10); // Si x n'est pas égal à 10, le programme s'arrête ici
+#ifndef est une directive de préprocesseur utilisée pour vérifier si un symbole n'est pas défini.
+Elle est souvent utilisée en conjonction avec #define pour éviter l'inclusion multiple des fichiers d'en-tête.
 
 unistd.h -> sleep
 time.h -> aléatoire : srand(time(NULL)); rand() % 26 + 65
@@ -62,7 +71,7 @@ int *p;
 p = &a; // on attribue l'adresse de a à p
 Les deux sont des alias, on peut donc modifier a en modifiant p.
 Reserver dynamiquement de la mémoire :
-int *p = (int *)malloc(sizeof(int)); attention malloc renvoie untype void donc on convertit en int*.
+int *p = (int *)malloc(sizeof(int)); attention malloc renvoie un type void donc on convertit en int*.
 on a aussi realloc
 D'OU:
 p pointeur => *p valeur, p adresse
@@ -70,9 +79,11 @@ n non pointeur => n valeur,  &adresse
 LOL : un pointeur peut pointer sur un pointeur (ex une matrice).
 free(p) pour libérer la mémoire
 const int *p; on peut modifier p mais pas *p
-int * const p; on peut modifier *p mais pas p
+int * const p; cela se lit comme "p est un pointeur constant vers un entier". 
+Cela signifie que l'adresse stockée dans p ne peut pas être modifiée, 
+mais la valeur pointée par p peut l'être.
 char *s = "hello";
-char c = *s; c = 
+char c = *s; c = h;
 ascii(\0) = 0!!!
 
 
@@ -82,7 +93,7 @@ scanf peut lire des caractères individuels et des entiers.
 scanf("%d", &var)
 fscanf(fichier, "%d", &var) pour lire dans "fichier" un entier et le stocker dans "var"
 fflsuh(stdin) pour vider le buffer de lecture
-fgets peut lire des lignes de texte dans un tableau de caractères (char).
+fgets peut lire des lignes de texte dans un tableau de caractères (char). (vec fgets vous pouvez saisir une ligne composée de plusieurs mots)
 fgetc peut lire des caractères individuels à partir d'un flux de fichier.
 en gros : on lit char par char sur 
     while(res != EOF){
@@ -91,6 +102,18 @@ en gros : on lit char par char sur
     }
 putchar(' ')
 printf(" ")
+#EXEMPLE
+// compte le nombre d'occurence d'un char dans une chaine
+void nbocc(char* str, char a){
+    int count = 0;
+    while(*str != '\0'){
+        if(*str == a){
+            count++;
+        }
+        str++;
+    }
+    printf("%d\n", count);
+}
 
 // int resultat = (2*6 == 32);
 // printf(“%d”, resultat);
@@ -143,10 +166,15 @@ meme si la condition est fausse dès le départ.
 le nom du tableau correspond à l'adresse de sa première case.
 int tab[taille] = {,,}
 tab[i] = *(tab + 1)
-tab -> str : char ch[] = {'o', 'l', 'a', '\0'}; printf("%s",ch);
-char *s = "hello"; printf("%s",s);
+
+QUAND ON VEUT MODIFER:
+tab -> str : char ch[] = {'o', 'l', 'a', '\0'}; printf("%s",ch); #MEMOIRE statique, ON PEUT MODIFIER GENRE ch[0] = 'a';
+
+char *s = "hello"; printf("%s",s); #pointeur alluée dynamiquement, ON PEUT PAS MODIFIER GENRE s[0] = 'a'; STOQUÉE EN LECTURE SEULE.
+ON PEUT UTILISER STRLEN ETC.
+
 fgets(tab,taille, stdin)==NULL{return -1}
-rappel : LE '\0', C'EST POUR LES STR, PAS LES TABLEAUX
+rappel : LE '\0', C'EST POUR LES STR, PAS pour les tableaux d'entiers. ?
 // calcul de la taille d'un tableau d'entier : 
 // int tab[] = {1, 2, 3, 4, 5};
 // int taille = sizeof(tab) / sizeof(tab[0]);
@@ -379,5 +407,16 @@ on écrit en dehors des limites du tableau donc problème.
 
 ###GDB
 voici comment on utilise gdb :
-gdb ./nom_du_fichierTexte écrit par prog.
-Texte écrit par prog.
+gdb ./nom_du_fichier
+
+
+
+### BUFFER OVERFLOW
+il s'agit sûrement du type de faille le plus connu et le plus simple à éviter. 
+Lors d'un dépassement de tampon, l'utilisateur entre une chaîne de caractères qui va 
+se retrouver dans un tableau de caractères de taille insuffisante ce qui va entraîner 
+l'écriture de données en dehors de la zone mémoire allouée pour le tableau. 
+Suivant le type de tableau (statique ou dynamique), on distingue deux types de buffer overflow :
+
+    Stack overflow : dépassement de tampon qui va écraser la pile (tableau en mémoire statique) :
+    Heap overflow : dépassement de tampon qui va écraser le tas (tableau dynamique).
