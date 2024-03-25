@@ -166,6 +166,11 @@ meme si la condition est fausse dès le départ.
 le nom du tableau correspond à l'adresse de sa première case.
 int tab[taille] = {,,}
 tab[i] = *(tab + 1)
+Un tableau correspond en fait `a un pointeur vers le premier ´el´ement du tableau. Ce pointeur
+est constant. Cela implique en particulier qu’aucune op´eration globale n’est autoris´ee sur un
+tableau. Notamment, un tableau ne peut pas figurer `a gauche d’un op´erateur d’affectation.
+Par exemple, on ne peut pas ´ecrire “tab1 = tab2;”. Il faut effectuer l’affectation pour chacun
+des ´el´ements du tableau
 
 QUAND ON VEUT MODIFER:
 tab -> str : char ch[] = {'o', 'l', 'a', '\0'}; printf("%s",ch); #MEMOIRE statique, ON PEUT MODIFIER GENRE ch[0] = 'a';
@@ -273,7 +278,8 @@ struct Person {
 };
 
 TYPEDEF utilisé pour définir un alias pour un type de données existant.
-typedef struct Person Person;
+typedef struct Person Person; en gros person est un alias pour struct Person
+sans le typedef on doit mettre struct a chaque fois qu'on utilise Person: struct Person p1;
 #maintenant on peut utiliser Person comme un vrai type:
 Person p1; qui équivaut à struct Person p1;
 
@@ -282,6 +288,8 @@ typedef struct {
     char name[50];
     int age;
 } Person;
+
+
 
 p_carte-> fig = rand() % 13 + 1; // permet de générer un nombre entre 1 et 13
 // la notation p_carte -> fig est équivalente à (*p_carte).fig 
@@ -420,3 +428,47 @@ Suivant le type de tableau (statique ou dynamique), on distingue deux types de b
 
     Stack overflow : dépassement de tampon qui va écraser la pile (tableau en mémoire statique) :
     Heap overflow : dépassement de tampon qui va écraser le tas (tableau dynamique).
+
+while ((c = getchar()) != EOF)
+
+si on fait int p = 1;
+printf("%d", p++); // affiche 1
+printf("%d", p); // affiche 2
+printf("%d", ++p); // affiche 3
+printf("%d", p); // affiche 3
+
+A toute instruction de type malloc ou calloc doit ˆetre associ´ee une instruction de type free.
+ain()
+{
+int k, n;
+int **tab;
+tab = (int**)malloc(k * sizeof(int*));
+for (i = 0; i < k; i++)
+tab[i] = (int*)malloc(n * sizeof(int));
+....
+for (i = 0; i < k; i++)
+free(tab[i]);
+free(tab);
+}
+
+La fonction strcat permet de concaténer le contenu d'une chaîne de caractères à une autre chaîne de caractères.
+C'est l'entête <stddef.h> qui déclare la macro NULL : sa valeur est ((void *) 0).
+
+l'opérateur * n'existe pas entre un char et un entier.
+
+En C, la division de deux entiers produit un entier. Ensuite, 
+cet entier est stoké dans une variable de type double. 
+Le résultat affiché est donc 0.000000
+
+Non, le langage C n'accepte pas la surcharge. Vous ne 
+pouvez donc pas définir deux fonctions de même nom.
+
+La norme C indique que les tailles des types de données sont 
+dépendantes de la plate-forme de compilation. La seule exception
+est pour char qui occupera toujours un octet.
+EN gros int n'est pas forcement à 4 octets.
+
+La fonction strlen ne tient pas compte du zéro terminal. 
+En conséquence, l'exemple de code proposé calcule la valeur 4.
+
+La fonction atoi (ASCII to Integer) permet de transformer une chaîne de caractères en un entier.
