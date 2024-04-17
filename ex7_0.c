@@ -110,6 +110,7 @@ void tp7(){
     else if (res < 0)
         putchar('<');
     printf(" %s.\n", CODE);
+}
 
 void tp8()
     {

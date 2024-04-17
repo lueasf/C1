@@ -35,3 +35,12 @@ int main(){
     free(tab);
     return 0;
 }
+
+
+/*code assembleur de gdb:
+gcc -g recherche.c -o recherche
+gdb ./main
+break main
+run
+disassemble
+*/

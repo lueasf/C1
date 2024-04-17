@@ -10,7 +10,7 @@
 
 
 // EX1
-typedef struct PIXEL{ 
+typedef struct { 
     int coorx;
     int coory;
     char color[15];

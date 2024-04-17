@@ -39,6 +39,13 @@ clean:
 
 && (et) || (ou)
 
+librairie <ctype.h>
+fonction renvoie 1 si le caract`ere est
+isalnum une lettre ou un chiffre
+isalpha une lettre
+iscntrl un caract`ere de commande
+isdigit un chiffre d´ecima
+
 
 
 ###Les librairies & macros ( code definie ds un fichier et reutilisable comme un include ou un define)
@@ -165,7 +172,7 @@ meme si la condition est fausse dès le départ.
 ### TABLEAU
 le nom du tableau correspond à l'adresse de sa première case.
 int tab[taille] = {,,}
-tab[i] = *(tab + 1)
+tab[i] = *(tab + i)
 Un tableau correspond en fait `a un pointeur vers le premier ´el´ement du tableau. Ce pointeur
 est constant. Cela implique en particulier qu’aucune op´eration globale n’est autoris´ee sur un
 tableau. Notamment, un tableau ne peut pas figurer `a gauche d’un op´erateur d’affectation.
@@ -325,7 +332,8 @@ représentation binaire vers la gauche ou la droite
 int* bad_answer_to_life(void) {
     int answer = 1;
     return &answer;
-}
+} qd une fonction renvoie une adresse, il faut que ce soit une
+variable du tas (malloc), sinon erreur probable
 Cette fonction renvoie un pointeur vers un entier qui 
 n'existe plus après l'exécution de la fonction. Car la variable
 est locale.
@@ -472,3 +480,8 @@ La fonction strlen ne tient pas compte du zéro terminal.
 En conséquence, l'exemple de code proposé calcule la valeur 4.
 
 La fonction atoi (ASCII to Integer) permet de transformer une chaîne de caractères en un entier.
+
+static int n; 
+On voit que la variable locale n est de classe statique (elle est initialis´ee `a z´ero, et sa valeur est
+conserv´ee d’un appel `a l’autre de la fonction). Par contre, il s’agit bien d’une variable locale,
+qui n’a aucun lien avec la variable globale du mˆeme nom
